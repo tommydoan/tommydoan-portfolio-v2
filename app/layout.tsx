@@ -3,34 +3,60 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-const font = Urbanist({ subsets: ["latin"] });
+// Sử dụng font Urbanist chuẩn phong cách thiết kế hiện đại
+const font = Urbanist({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Tommy Doan | Software Engineer Portfolio",
-  description: "Software Engineer specializing in Systems, IoT, and AI. Explore my technical projects and expertise.",
-  keywords: ["Tommy Doan", "Software Engineer", "Portfolio", "Next.js", "Systems Programming", "C++", "AI"],
+  // Sửa lỗi ⚠ metadataBase bằng cách thêm URL chính thức của bạn
+  metadataBase: new URL("https://tommydoan-portfolio-v2.vercel.app/"),
+  title: "Đoàn Công Minh | Kĩ sư phần mềm & Lập trình viên",
+  description: "Portfolio chuyên nghiệp của Đoàn Công Minh (Tommy Doan) - Chuyên gia hệ thống, IoT và AI.",
+  keywords: ["Đoàn Công Minh", "Tommy Doan", "Software Engineer", "Next.js Portfolio", "IoT Specialist"],
   openGraph: {
-    title: "Tommy Doan | Technical Portfolio",
-    description: "Expertise in C++, Python, Neo4j, and IoT Systems.",
-    url: "https://tommydoan-portfolio-v2.vercel.app/", // Thay bằng link Vercel của bạn
-    siteName: "Tommy Doan Portfolio",
+    title: "Đoàn Công Minh | Technical Portfolio",
+    description: "Khám phá các dự án về C++, Python, Neo4j và Hệ thống IoT của tôi.",
+    url: "https://tommydoan-portfolio-v2.vercel.app/",
+    siteName: "Minh Portfolio",
     images: [
       {
-        url: "/og-image.png", // Bạn hãy tạo 1 tấm ảnh chụp màn hình web và bỏ vào thư mục public
+        url: "/og-image.png", // Đảm bảo bạn có file này trong thư mục public/
         width: 1200,
         height: 630,
+        alt: "Đoàn Công Minh Portfolio Cover",
       },
     ],
     locale: "vi_VN",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Đoàn Công Minh | Software Engineer",
+    description: "Kiến tạo những giải pháp công nghệ bền vững.",
+    images: ["/og-image.png"],
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="vi" suppressHydrationWarning>
-      <body className={`${font.className} transition-colors duration-300`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      {/* - bg-grid-tech: Kích hoạt lưới nền Emerald từ globals.css
+        - selection:bg-emerald-500: Đổi màu khi bôi đen văn bản cho "xịn xò"
+      */}
+      <body className={`${font.className} bg-grid-tech selection:bg-emerald-500/30 selection:text-emerald-500 antialiased`}>
+        <ThemeProvider 
+          attribute="class" 
+          defaultTheme="dark" 
+          enableSystem={true}
+          disableTransitionOnChange={false}
+        >
           {children}
         </ThemeProvider>
       </body>
