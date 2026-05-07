@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tommy Doan | Technical Portfolio",
     description: "Expertise in C++, Python, Neo4j, and IoT Systems.",
-    url: "https://your-domain.com", // Thay bằng link Vercel của bạn
+    url: "https://tommydoan-portfolio-v2.vercel.app/", // Thay bằng link Vercel của bạn
     siteName: "Tommy Doan Portfolio",
     images: [
       {
