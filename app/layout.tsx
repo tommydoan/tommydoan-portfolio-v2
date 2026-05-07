@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import CustomCursor from "@/components/CustomCursor"; // <-- THÊM DÒNG NÀY: Import con trỏ phát sáng
 
 // Sử dụng font Urbanist chuẩn phong cách thiết kế hiện đại
 const font = Urbanist({ 
@@ -51,6 +52,9 @@ export default function RootLayout({
         - selection:bg-emerald-500: Đổi màu khi bôi đen văn bản cho "xịn xò"
       */}
       <body className={`${font.className} bg-grid-tech selection:bg-emerald-500/30 selection:text-emerald-500 antialiased`}>
+        
+        <CustomCursor /> {/* <-- THÊM DÒNG NÀY: Đặt ngay sau thẻ body */}
+
         <ThemeProvider 
           attribute="class" 
           defaultTheme="dark" 
